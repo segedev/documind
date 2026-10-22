@@ -56,10 +56,10 @@ class IngestionService {
         });
 
         console.log(
-          `✅ [DocuMind Worker] Indexed Document ${documentId} (${chunkDocs.length} chunks) in ${processingTimeMs}ms`
+          `[DocuMind Worker] Indexed Document ${documentId} (${chunkDocs.length} chunks) in ${processingTimeMs}ms`
         );
       } catch (error) {
-        console.error(`❌ [DocuMind Worker] Ingestion failed for ${documentId}:`, error.message);
+        console.error(`[DocuMind Worker] Ingestion failed for ${documentId}:`, error.message);
         await Document.findByIdAndUpdate(documentId, {
           status: 'FAILED',
           errorMessage: error.message,
